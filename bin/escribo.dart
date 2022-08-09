@@ -5,7 +5,7 @@ void main(List<String> arguments) {
   if (arguments.isNotEmpty) {
     try {
       int number = int.parse(arguments[0]);
-      print('resultado: ${escribo.calculate(number)}');
+      print('resultado: ${escribo.sumNumbers(number)}');
     } catch (e) {
       print('Error: ${e.toString()}');
     }
