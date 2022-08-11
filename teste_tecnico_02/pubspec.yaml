@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   bonfire: ^2.7.1
+
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +23,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/maps/
-    - assets/maps/tiles/
-    - assets/maps/frames/
+    - assets/images/
+    - assets/images/maps/
+    - assets/images/sprites/
+    # - assets/images/player/
+    # - assets/images/enemies/
+    # - assets/images/abilities/
+    

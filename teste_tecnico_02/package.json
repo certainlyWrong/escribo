@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gitmoji-cli": "^5.1.0",
+    "npm": "^8.17.0"
+  }
+}
