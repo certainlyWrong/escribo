@@ -21,7 +21,9 @@ No jogo você deverá percorrer o mapa até pegar todas as moedas. É possível 
 
 ## Packages usados
 bonfire - [![pub package](https://img.shields.io/pub/v/bonfire.svg)](https://pub.dev/packages/bonfire)
+
 just_audio - [![pub package](https://img.shields.io/pub/v/just_audio.svg)](https://pub.dev/packages/just_audio)
+
 shared_preferences - [![pub package](https://img.shields.io/pub/v/shared_preferences.svg)](https://pub.dev/packages/shared_preferences)
 
 ## Observações
