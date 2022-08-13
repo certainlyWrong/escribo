@@ -1,5 +1,4 @@
 import 'package:bonfire/bonfire.dart';
-import 'package:flutter/material.dart';
 import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
 
 enum EnemyType {
@@ -24,7 +23,7 @@ class LoadEnemy extends SimpleEnemy with ObjectCollision {
   }) : super(
           position: enemyPosition,
           size: Vector2(tile, tile),
-          life: 2,
+          life: 1,
           animation: SimpleDirectionAnimation(
             idleRight: spriteSheet.load(
               initPosition: Vector2(0, enemyType.index * tile),
@@ -55,6 +54,8 @@ class LoadEnemy extends SimpleEnemy with ObjectCollision {
         ],
       ),
     );
+
+    collisionConfig!.collisionOnlyVisibleScreen = true;
   }
 
   @override
@@ -62,21 +63,11 @@ class LoadEnemy extends SimpleEnemy with ObjectCollision {
     super.update(dt);
     seeAndMoveToPlayer(
       closePlayer: (player) {
-        print(player.isVisible);
+        // print(player.isVisible);
         return true;
       },
+      margin: -1,
       radiusVision: radiusVision,
     );
-  }
-
-  // override this method render
-  @override
-  void render(Canvas canvas) {
-    drawDefaultLifeBar(
-      canvas,
-      colorsLife: [Colors.red, Colors.blue],
-      align: const Offset(0, -8),
-    );
-    super.render(canvas);
   }
 }

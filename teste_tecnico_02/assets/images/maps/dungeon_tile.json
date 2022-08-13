@@ -710,10 +710,11 @@
          "objectgroup":
             {
              "draworder":"index",
+             "id":2,
              "name":"",
              "objects":[
                     {
-                     "height":4.09868421052632,
+                     "height":3.91118421052632,
                      "id":1,
                      "name":"",
                      "rotation":0,
@@ -721,7 +722,7 @@
                      "visible":true,
                      "width":16,
                      "x":0,
-                     "y":11.9013157894737
+                     "y":12.0888157894737
                     }],
              "opacity":1,
              "type":"objectgroup",
@@ -766,7 +767,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -819,19 +819,19 @@
          "objectgroup":
             {
              "draworder":"index",
+             "id":2,
              "name":"",
              "objects":[
                     {
-                     "ellipse":true,
                      "height":4,
-                     "id":2,
+                     "id":3,
                      "name":"",
                      "rotation":0,
                      "type":"",
                      "visible":true,
-                     "width":4,
-                     "x":11.625,
-                     "y":12.4375
+                     "width":5,
+                     "x":11,
+                     "y":12
                     }],
              "opacity":1,
              "type":"objectgroup",
@@ -950,7 +950,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -977,7 +976,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -1003,7 +1001,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {

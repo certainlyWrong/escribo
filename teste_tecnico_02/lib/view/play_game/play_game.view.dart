@@ -1,8 +1,13 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:teste_tecnico_02/game/load_enemy.dart';
+import 'package:teste_tecnico_02/game/load_money.dart';
+import 'package:teste_tecnico_02/game/load_sword.dart';
 import 'package:teste_tecnico_02/game/load_player.dart';
 import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
+import 'package:teste_tecnico_02/view/play_game/interface/status_bar.widget.dart';
+import 'package:teste_tecnico_02/view/play_game/interface/status_bar.interface.dart';
 
 class PlayGameView extends StatefulWidget {
   final double tile;
@@ -13,7 +18,7 @@ class PlayGameView extends StatefulWidget {
 }
 
 class _PlayGameViewState extends State<PlayGameView> {
-  late Vector2 playerPosition;
+  late Vector2 playerPosition, spriteSize;
 
   // Default values for the sprite sheet
   Map<String, Vector2> striteDimensions = {
@@ -28,77 +33,112 @@ class _PlayGameViewState extends State<PlayGameView> {
       19 * widget.tile,
       2 * widget.tile,
     );
+    spriteSize = Vector2(widget.tile, widget.tile);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 900,
-          height: 400,
-          child: BonfireTiledWidget(
-            joystick: Joystick(
-              keyboardConfig: KeyboardConfig(
-                keyboardDirectionalType: KeyboardDirectionalType.wasdAndArrows,
-              ),
-            ),
-            cameraConfig: CameraConfig(
-              zoom: 2.5,
-              angle: 5,
-              smoothCameraEnabled: true,
-              smoothCameraSpeed: 0.8,
-              moveOnlyMapArea: true,
-            ),
-            map: TiledWorldMap(
-              'maps/dungeon.json',
-              objectsBuilder: {
-                'enemy1': (properties) => LoadEnemy(
-                      enemySpeed: 20,
-                      radiusVision: 100,
-                      enemyType: EnemyType.type1,
-                      enemyPosition: properties.position,
-                      tile: widget.tile,
-                      spriteSheet: LoadSpriteSheet(
-                        Vector2(16, 16),
-                        'sprites/enemies.png',
-                      ),
-                    ),
-                'enemy2': (properties) => LoadEnemy(
-                      enemySpeed: 30,
-                      radiusVision: 130,
-                      enemyType: EnemyType.type2,
-                      enemyPosition: properties.position,
-                      tile: widget.tile,
-                      spriteSheet: LoadSpriteSheet(
-                        Vector2(16, 16),
-                        'sprites/enemies.png',
-                      ),
-                    ),
-                'enemy3': (properties) => LoadEnemy(
-                      enemySpeed: 40,
-                      radiusVision: 150,
-                      enemyType: EnemyType.type3,
-                      enemyPosition: properties.position,
-                      tile: widget.tile,
-                      spriteSheet: LoadSpriteSheet(
-                        Vector2(16, 16),
-                        'sprites/enemies.png',
-                      ),
-                    ),
-              },
-            ),
-            player: LoadPlayer(
-              playerPosition,
-              spriteSheet: LoadSpriteSheet(
-                striteDimensions['type1']!,
-                'sprites/sprites.png',
-              ),
-            ),
-            showCollisionArea: true,
+      body: BonfireTiledWidget(
+        joystick: Joystick(
+          keyboardConfig: KeyboardConfig(
+            keyboardDirectionalType: KeyboardDirectionalType.wasdAndArrows,
+          ),
+          // directional: JoystickDirectional(),
+        ),
+        interface: StatusBarInterface(),
+        overlayBuilderMap: {
+          'status_bar': (context, game) => const StatusBarWidget(),
+        },
+        initialActiveOverlays: const [
+          'status_bar',
+        ],
+        lightingColorGame: Colors.black.withOpacity(0.7),
+        cameraConfig: CameraConfig(
+          zoom: 2.5,
+          angle: 5,
+          smoothCameraEnabled: true,
+          smoothCameraSpeed: 0.8,
+          moveOnlyMapArea: true,
+        ),
+        map: TiledWorldMap(
+          'maps/dungeon.json',
+          objectsBuilder: {
+            'enemy1': (properties) => LoadEnemy(
+                  enemySpeed: 10,
+                  radiusVision: 150,
+                  enemyType: EnemyType.type1,
+                  enemyPosition: properties.position,
+                  tile: widget.tile,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/enemies.png',
+                  ),
+                ),
+            'enemy2': (properties) => LoadEnemy(
+                  enemySpeed: 20,
+                  radiusVision: 200,
+                  enemyType: EnemyType.type2,
+                  enemyPosition: properties.position,
+                  tile: widget.tile,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/enemies.png',
+                  ),
+                ),
+            'enemy3': (properties) => LoadEnemy(
+                  enemySpeed: 30,
+                  radiusVision: 200,
+                  enemyType: EnemyType.type3,
+                  enemyPosition: properties.position,
+                  tile: widget.tile,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/enemies.png',
+                  ),
+                ),
+            'life': (properties) => Potion(
+                  spriteSword: 1,
+                  swordType: SwordType.life,
+                  tile: widget.tile,
+                  size: Vector2(widget.tile, widget.tile),
+                  position: properties.position,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/lifeAndSword.png',
+                  ),
+                ),
+            'sword': (properties) => Potion(
+                  spriteSword: 0,
+                  swordType: SwordType.death,
+                  tile: widget.tile,
+                  size: Vector2(widget.tile, widget.tile),
+                  position: properties.position,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/lifeAndSword.png',
+                  ),
+                ),
+            'money': (properties) => Money(
+                  tile: widget.tile,
+                  size: Vector2(widget.tile, widget.tile),
+                  position: properties.position,
+                  spriteSheet: LoadSpriteSheet(
+                    spriteSize,
+                    'sprites/money.png',
+                  ),
+                ),
+          },
+        ),
+        player: LoadPlayer(
+          playerPosition,
+          spriteSheet: LoadSpriteSheet(
+            striteDimensions['type1']!,
+            'sprites/sprites.png',
           ),
         ),
+        // showCollisionArea: kDebugMode,
       ),
     );
   }

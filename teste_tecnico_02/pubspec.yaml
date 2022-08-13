@@ -12,7 +12,8 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   bonfire: ^2.7.1
-
+  provider: ^6.0.3
+  just_audio: ^0.9.28
 
 dev_dependencies:
   flutter_test:
@@ -23,10 +24,13 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/fonts/
+    - assets/sounds/
     - assets/images/
     - assets/images/maps/
     - assets/images/sprites/
-    # - assets/images/player/
-    # - assets/images/enemies/
-    # - assets/images/abilities/
-    
+
+  fonts:
+    - family: Minecraft
+      fonts:
+        - asset: assets/fonts/Minecraft.ttf
