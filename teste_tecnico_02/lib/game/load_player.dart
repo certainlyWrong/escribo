@@ -106,20 +106,6 @@ class LoadPlayer extends SimplePlayer with ObjectCollision, Lighting {
     return super.onCollision(component, active);
   }
 
-  // @override
-  // void render(Canvas canvas) {
-  //   drawDefaultLifeBar(canvas,
-  //       borderRadius: BorderRadius.circular(2),
-  //       colorsLife: [
-  //         Colors.red,
-  //         Colors.yellow,
-  //         Colors.green,
-  //       ],
-  //       align: const Offset(0, -15));
-
-  //   super.render(canvas);
-  // }
-
   @override
   void joystickChangeDirectional(JoystickDirectionalEvent event) {
     if ((hasGameRef && gameRef.player!.isDead) || money == 24) {
@@ -146,6 +132,7 @@ class LoadPlayer extends SimplePlayer with ObjectCollision, Lighting {
     _statusBarController!.life = life.toInt();
     _statusBarController!.money = money;
     _statusBarController!.sword = sword;
+    _statusBarController!.isFinish = isDead || money == 24;
     super.update(dt);
   }
 
@@ -169,10 +156,8 @@ class LoadPlayer extends SimplePlayer with ObjectCollision, Lighting {
                 actions: [
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/',
-                        ((route) => false),
-                      );
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/', (_) => false);
                     },
                     child: const Text('Voltar'),
                   ),

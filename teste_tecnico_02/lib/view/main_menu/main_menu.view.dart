@@ -1,6 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainMenuView extends StatefulWidget {
   const MainMenuView({super.key});
@@ -10,27 +9,17 @@ class MainMenuView extends StatefulWidget {
 }
 
 class _MainMenuViewState extends State<MainMenuView> {
-  late AudioPlayer audioPlayer;
-
-  void permissionSound() async {
-    Future.delayed(const Duration(seconds: 2), () async {
-      audioPlayer = AudioPlayer();
-
-      List<String> aux = [
-        'assets/sounds/background1.mp3',
-        'assets/sounds/background2.mp3',
-        'assets/sounds/background3.mp3',
-      ];
-
-      audioPlayer.setLoopMode(LoopMode.one);
-      audioPlayer.setAsset(aux[Random().nextInt(aux.length)]);
-      await audioPlayer.play();
-    });
-  }
+  String? _time;
 
   @override
   void initState() {
-    permissionSound();
+    SharedPreferences.getInstance().then(
+      (prefs) {
+        setState(() {
+          _time = prefs.getString('time');
+        });
+      },
+    );
     super.initState();
   }
 
@@ -41,6 +30,13 @@ class _MainMenuViewState extends State<MainMenuView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              'Tempo: ${_time ?? 'Você não jogou ainda'}',
+              style: const TextStyle(
+                fontSize: 30,
+              ),
+            ),
+            const SizedBox(height: 20),
             SizedBox(
               width: 100,
               height: 40,

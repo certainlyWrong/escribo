@@ -3,6 +3,7 @@ import 'package:teste_tecnico_02/view/play_game/interface/sword.component.dart';
 
 class StatusBarController extends StateController<SwordComponent> {
   int _life = 0, _money = 0, _sword = 0;
+  bool _isFinish = false;
 
   @override
   void update(double dt, SwordComponent component) {}
@@ -11,6 +12,13 @@ class StatusBarController extends StateController<SwordComponent> {
 
   set sword(int value) {
     _sword = value;
+    notifyListeners();
+  }
+
+  bool get isFinish => _isFinish;
+
+  set isFinish(bool value) {
+    _isFinish = value;
     notifyListeners();
   }
 

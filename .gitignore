@@ -49,7 +49,7 @@ android/app/release
 linux
 web
 *.code-workspace
-.firebase
+teste_tecnico_02/.firebase
 
 
 

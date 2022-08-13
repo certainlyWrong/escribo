@@ -1,6 +1,7 @@
+import 'dart:math';
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:teste_tecnico_02/game/load_enemy.dart';
 import 'package:teste_tecnico_02/game/load_money.dart';
 import 'package:teste_tecnico_02/game/load_sword.dart';
@@ -19,12 +20,26 @@ class PlayGameView extends StatefulWidget {
 
 class _PlayGameViewState extends State<PlayGameView> {
   late Vector2 playerPosition, spriteSize;
-
+  late AudioPlayer audioPlayer;
   // Default values for the sprite sheet
   Map<String, Vector2> striteDimensions = {
     'type1': Vector2(16, 32), // Dimensions for the player
     'type2': Vector2(16, 16), // Dimensions for the enemies
   };
+
+  void permissionSound() async {
+    audioPlayer = AudioPlayer();
+
+    List<String> aux = [
+      'assets/sounds/background1.mp3',
+      'assets/sounds/background2.mp3',
+      'assets/sounds/background3.mp3',
+    ];
+
+    audioPlayer.setLoopMode(LoopMode.one);
+    audioPlayer.setAsset(aux[Random().nextInt(aux.length)]);
+    await audioPlayer.play();
+  }
 
   @override
   void initState() {
@@ -34,7 +49,15 @@ class _PlayGameViewState extends State<PlayGameView> {
       2 * widget.tile,
     );
     spriteSize = Vector2(widget.tile, widget.tile);
+
+    permissionSound();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
   }
 
   @override

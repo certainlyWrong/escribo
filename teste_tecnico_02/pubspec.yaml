@@ -14,6 +14,7 @@ dependencies:
   bonfire: ^2.7.1
   provider: ^6.0.3
   just_audio: ^0.9.28
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
