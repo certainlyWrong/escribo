@@ -1,5 +1,6 @@
 import 'package:bonfire/bonfire.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.controller.dart';
+
+import 'status_bar.controller.dart';
 
 class SwordComponent extends InterfaceComponent
     with UseStateController<StatusBarController> {
@@ -11,9 +12,4 @@ class SwordComponent extends InterfaceComponent
             srcSize: Vector2(16, 16),
           ),
         );
-
-  @override
-  void onMount() {
-    super.onMount();
-  }
 }

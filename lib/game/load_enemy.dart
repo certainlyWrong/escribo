@@ -1,5 +1,6 @@
 import 'package:bonfire/bonfire.dart';
-import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
+
+import 'load_sprite_sheet.dart';
 
 enum EnemyType {
   type1,

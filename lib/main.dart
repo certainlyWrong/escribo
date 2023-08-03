@@ -1,11 +1,12 @@
 import 'package:bonfire/bonfire.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:teste_tecnico_02/view/main_menu/main_menu.view.dart';
-import 'package:teste_tecnico_02/view/play_game/play_game.view.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.controller.dart';
+
+import 'view/main_menu/main_menu.view.dart';
+import 'view/play_game/interface/status_bar.controller.dart';
+import 'view/play_game/play_game.view.dart';
 
 void main() {
   if (kDebugMode) {

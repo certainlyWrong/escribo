@@ -1,14 +1,16 @@
 import 'dart:math';
+
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:teste_tecnico_02/game/load_enemy.dart';
-import 'package:teste_tecnico_02/game/load_money.dart';
-import 'package:teste_tecnico_02/game/load_sword.dart';
-import 'package:teste_tecnico_02/game/load_player.dart';
-import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.widget.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.interface.dart';
+
+import '../../game/load_enemy.dart';
+import '../../game/load_money.dart';
+import '../../game/load_player.dart';
+import '../../game/load_sprite_sheet.dart';
+import '../../game/load_sword.dart';
+import 'interface/status_bar.interface.dart';
+import 'interface/status_bar.widget.dart';
 
 class PlayGameView extends StatefulWidget {
   final double tile;

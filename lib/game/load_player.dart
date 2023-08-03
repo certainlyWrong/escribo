@@ -1,8 +1,9 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
-import 'package:teste_tecnico_02/game/load_enemy.dart';
-import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.controller.dart';
+
+import '../view/play_game/interface/status_bar.controller.dart';
+import 'load_enemy.dart';
+import 'load_sprite_sheet.dart';
 
 /// Possivel opção para escolher a skin do player
 /// Se eu tiver tempo de implementar...

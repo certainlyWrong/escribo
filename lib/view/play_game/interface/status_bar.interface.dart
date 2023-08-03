@@ -1,5 +1,4 @@
 import 'package:bonfire/bonfire.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/sword.component.dart';
 
 class StatusBarInterface extends GameInterface {
   @override

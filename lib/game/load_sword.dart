@@ -1,6 +1,7 @@
-import 'load_player.dart';
 import 'package:bonfire/bonfire.dart';
-import 'package:teste_tecnico_02/game/load_sprite_sheet.dart';
+
+import 'load_player.dart';
+import 'load_sprite_sheet.dart';
 
 enum SwordType {
   life,

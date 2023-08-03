@@ -1,5 +1,6 @@
 import 'package:bonfire/bonfire.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/sword.component.dart';
+
+import 'sword.component.dart';
 
 class StatusBarController extends StateController<SwordComponent> {
   int _life = 0, _money = 0, _sword = 0;

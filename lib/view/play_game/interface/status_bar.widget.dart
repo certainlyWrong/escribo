@@ -1,8 +1,10 @@
 import 'dart:async' as asy;
+
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:teste_tecnico_02/view/play_game/interface/status_bar.controller.dart';
+
+import 'status_bar.controller.dart';
 
 class StatusBarWidget extends StatefulWidget {
   const StatusBarWidget({super.key});
